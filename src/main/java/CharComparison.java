@@ -1,3 +1,5 @@
+import java.util.Optional;
+
 public class CharComparison {
     /**
      * Given an array of char, determine if the array A belongs to the left or to the right of char array B lexigraphically.
@@ -12,23 +14,21 @@ public class CharComparison {
      */
     public int compare(char[] a, char[] b){
 
-        int length = Math.min(a.length, b.length);
+        int length = Math.max(a.length, b.length);
         
         for (int i = 0; i < length; i++) {
-            if (a[i] < b[i]) {
+
+            Character currentA = Optional.ofNullable(a[i]).orElseGet(() -> '0');
+            Character currentB = Optional.ofNullable(b[i]).orElseGet(() -> '0');
+
+            if (currentA < currentB) {
                 return -1;
             }
-            else if (a[i] > b[i]) {
+            else if (currentA > currentB) {
                 return 1;
             }
         }
-        
-        if (length < b.length) {
-            return -1;
-        }
-        else if (a.length > length) {
-            return 1;
-        }
+
         return 0;
     }
 }
