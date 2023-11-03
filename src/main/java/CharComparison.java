@@ -18,8 +18,8 @@ public class CharComparison {
         
         for (int i = 0; i < length; i++) {
 
-            Character currentA = Optional.ofNullable(a[i]).orElseGet(() -> '0');
-            Character currentB = Optional.ofNullable(b[i]).orElseGet(() -> '0');
+            char currentA = Optional.ofNullable(a[i]).orElseGet(() -> '0');
+            char currentB = Optional.ofNullable(b[i]).orElseGet(() -> '0');
 
             if (currentA < currentB) {
                 return -1;
